@@ -2,16 +2,13 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
-<h1>Your Pragmatic Catalog</h1>
+<div class="center hero-unit">
+<h1>Welcome to the Paradoxe</h1>
+<h2>
+This is the home page for the
+<a href="http://iluminationtheory.myshopify.com/">IlluminationTheory Seller</a>
+sample application.
+</h2>
+<%= link_to "Sign up now!", 'new_user_path', class: "btn btn-large btn-primary" %>
+</div>
 
-<% @products.each do |product| %>
-	<div class="entry">
-		<%= image_tag(product.image_url) %>
-		<h3><%= product.title %></h3>
-		<%= sanitize(product.description) %>
-		<div class="price_line">
-			
-			<%= button_to 'Daftar', '#' %>
-		</div>
-	</div>
-<% end %>

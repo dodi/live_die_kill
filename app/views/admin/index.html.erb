@@ -1,0 +1,7 @@
+<h1>Welcome</h1>
+
+It's <% Time.now %>
+
+We have <%= User.count %>
+
+<%= @products = ShopifyAPI::Product.find(:all, :params => {:limit => 10}) %>

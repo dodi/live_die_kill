@@ -1,11 +1,17 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  #before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
   # GET /products.json
+shop_url = "https://5f949a382618ef54ad10606cb2fc952e:17953c4f69fb983105697c033a5889fd@illuminationtheory.myshopify.com/admin/products.json"
+ShopifyAPI::Base.site = shop_url
+
   def index
-    @products = Product.all
+    # get 3 products
+    @products     = ShopifyAPI::Product.find(:all, :params => {:limit => 3})
+
   end
+
 
   # GET /products/1
   # GET /products/1.json
@@ -14,7 +20,7 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
-    @product = Product.new
+    #@product = ShopifyAPI::Product.new
   end
 
   # GET /products/1/edit
@@ -69,6 +75,7 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:title, :description, :image_url, :price)
+      params.require(:product).permit(:title, :description, :product_type, :vendor, :image_url, :price)
     end
+
 end
